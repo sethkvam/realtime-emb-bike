@@ -1,7 +1,5 @@
 #include "lpc1114.h"
 #include "main.h"
-//#include "stepper.c"
-//#include "ssd1306.c"
 
 unsigned time_check = 0;
 unsigned magnet_count = 0;

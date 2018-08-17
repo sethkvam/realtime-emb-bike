@@ -1,0 +1,14 @@
+This repository is built for a LPC1114 microcontroller to power a custom 21-speed bicycle. There are four major systems on the bike: Cadence,  Front Derailleur, Back Derailleur,  and Display. 
+
+Hall Effect Sensor
+The cadence is measured by a Hall Effect sensor and four magnets mounted on front crank.  The typical biker pedals at about 60 rotations per minute or one cycle per second.  At this rate, the Hall Effect sensor would detect the passage of four magnets per second.  The goal of the project is to keep the cadence roughly fixed at this rate.  If more than six magnets pass the sensor, then the bike is geared too low.  If fewer than three are sensed, the bike is geared too high. 
+
+Servo Motor
+The front derailluer selects which crank sprocket is in use.  This is usually controlled by a cable that is adjusted by the rider.  On this bike, the sprocket is controlled by a servo motor.  Since there are three sprockets on the front crank.  The correct pulse timings must be sent to the servo to select the correct "gear."
+
+Stepper and Switch
+The back derailluer selects the cog.  Like the front derailluer, the rear dearailluer is controlled by a cable that is adjusted by the rider.  On our bike, the cable is connected to a worm-gear pulley system that is driven by a stepper motor.  Unlike the servo, steppers do not have a zero position.  There is a switch attached to the rear of the bike that detects when the rear derailluer is about to move off of the smallest cog.  You will have to move the back derailluer until it closes this switch to know its current position.  After this zero-potion, your controller will have to keep track of the current position each time the stepper is moved. 
+
+I2C Display
+Attached to the front handle bars is an OLED display.  Your controller will keep the user informed about the state of the bike's transmission.  At the very least, display the front and back gearing. 
+

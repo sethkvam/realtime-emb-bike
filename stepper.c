@@ -72,7 +72,7 @@ __attribute__((constructor))
 
 
  void rotate_to_up(){
-    //take the correct step
+    // take the correct step
     if(step_loc == 0){
         GPIO1.DATA[PIN_9] = A[step_array_pos_up];
     }else if (step_loc == 1){
@@ -82,7 +82,7 @@ __attribute__((constructor))
     }else if(step_loc == 3){
         GPIO1.DATA[PIN_6] = B_BAR[step_array_pos_up];
     }
-    //move down the step array
+    // move down the step array
     if(move_to_next_index == 0){
         if(step_array_pos_up == 0){
             step_array_pos_up = 3;
@@ -94,16 +94,16 @@ __attribute__((constructor))
     }else{
         move_to_next_index--;
     }
-    //move down the step location
+    // move down the step location
     if(step_loc == 3){
         step_loc = 0;
     }else{
         step_loc ++;
     }
-    //check if steps have finished
+    // check if steps have finished
     if(steps == 0){
-        TMR16B0.TCR.CEn  = 1; //turn on hall clock 
-        TMR32B1.TCR.CEn  = 0; //turn off stepper clock
+        TMR16B0.TCR.CEn  = 1; // turn on hall clock 
+        TMR32B1.TCR.CEn  = 0; // turn off stepper clock
         ISER.SETENA |= 1<<15 | 1<<24 | 1<<16;
     }else{
         steps--;
@@ -113,7 +113,7 @@ __attribute__((constructor))
 
 
  void rotate_to_down(){
-    //take the correct step
+    // take the correct step
     if(step_loc == 0){
         GPIO1.DATA[PIN_9] = A[step_array_pos_down];
     }else if (step_loc == 1){
@@ -123,7 +123,7 @@ __attribute__((constructor))
     }else if(step_loc == 3){
         GPIO1.DATA[PIN_6] = B_BAR[step_array_pos_down];
     }
-    //move down the step array
+    // move down the step array
     if(move_to_next_index == 0){
         if(step_array_pos_down == 3){
             step_array_pos_down = 0;
@@ -135,16 +135,16 @@ __attribute__((constructor))
     }else{
         move_to_next_index--;
     }
-    //move down the step location
+    // move down the step location
     if(step_loc == 3){
         step_loc = 0;
     }else{
         step_loc ++;
     }
-    //check if steps have finished
+    // check if steps have finished
     if(steps == 0){
-        TMR16B0.TCR.CEn  = 1; //turn on hall clock 
-        TMR32B1.TCR.CEn  = 0; //turn off stepper clock
+        TMR16B0.TCR.CEn  = 1; // turn on hall clock 
+        TMR32B1.TCR.CEn  = 0; // turn off stepper clock
         ISER.SETENA |= 1<<15 | 1<<24 | 1<<16;
     }else{
         steps--;
